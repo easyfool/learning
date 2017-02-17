@@ -5,14 +5,15 @@ package com.wangfengbabe;
  */
 
 public class User {
-    String name;
 
-    public User(String name) {
-        this.name = name;
-    }
+  String name;
+
+  public User(String name) {
+    this.name = name;
+  }
 
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 }
