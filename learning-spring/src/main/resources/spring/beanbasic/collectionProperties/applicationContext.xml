@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+  <bean id="garden" class="com.wangfengbabe.learning_spring.beanbasic.collectionProperties.Garden">
+    <!-- java.util.List -->
+    <property name="lists">
+      <list>
+        <value>1</value>
+        <ref bean="person"/>
+        <bean class="com.wangfengbabe.learning_spring.beanbasic.innerBean.Person">
+          <property name="name" value="mkyongList"/>
+          <property name="age" value="28"/>
+        </bean>
+      </list>
+    </property>
+
+    <!-- java.util.Set -->
+    <property name="sets">
+      <set>
+        <value>1</value>
+        <ref bean="person"/>
+        <bean class="com.wangfengbabe.learning_spring.beanbasic.innerBean.Person">
+          <property name="name" value="mkyongList"/>
+          <property name="age" value="28"/>
+        </bean>
+      </set>
+    </property>
+
+    <!-- java.util.Map -->
+    <property name="maps">
+      <map>
+        <entry key="key1" value="value1"/>
+        <entry key="key2" value-ref="person"/>
+        <entry key="key3">
+          <bean class="com.wangfengbabe.learning_spring.beanbasic.injectValue.normalway.Person"/>
+        </entry>
+      </map>
+    </property>
+
+    <!-- java.util.Properties -->
+    <property name="properties">
+      <props>
+        <prop key="key1">wangfengabbe.com</prop>
+        <prop key="key2">zhaochi.com</prop>
+      </props>
+    </property>
+  </bean>
+
+
+  <bean id="person" class="com.wangfengbabe.learning_spring.beanbasic.beanScope.Customer"></bean>
+</beans>

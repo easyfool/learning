@@ -9,8 +9,20 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class App {
 
   public static void main(String[] args) {
-    ApplicationContext context = new ClassPathXmlApplicationContext("spring/spring-beans.xml");
-    HelloWorld helloWorld = (HelloWorld) context.getBean("helloWorld");
-    helloWorld.sayHello();
+    ApplicationContext context = new ClassPathXmlApplicationContext("spring/ApplicationContext.xml");
+    CustomerService service = (CustomerService) context.getBean("customerServiceProxy");
+    System.out.println();
+    service.printName();
+    System.out.println();
+    service.printUrl();
+    System.out.println();
+    try {
+      service.printThrowException();
+    } catch (Exception e) {
+      System.out.println("exception throwed");
+    }
+
+    CustomerBo customerBo = (CustomerBo) context.getBean("customerBo");
+    customerBo.addCustomer();
   }
 }
