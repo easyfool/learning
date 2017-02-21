@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+  <!-- java.util.list -->
+  <bean id="customerList1" class="com.wangfengbabe.learning_spring.beanbasic.factoryBean.CustomerList">
+    <property name="list">
+      <bean class="org.springframework.beans.factory.config.ListFactoryBean">
+        <property name="targetListClass">
+          <value>java.util.ArrayList</value>
+        </property>
+        <property name="sourceList">
+          <list>
+            <value>1</value>
+            <value>2</value>
+            <value>3</value>
+            <value>4</value>
+          </list>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <bean id="customerList2" class="com.wangfengbabe.learning_spring.beanbasic.factoryBean.CustomerList">
+    <property name="list">
+      <util:list list-class="java.util.ArrayList">
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+      </util:list>
+    </property>
+  </bean>
+
+  <!-- java.util.set -->
+  <bean id="customerSet1" class="com.wangfengbabe.learning_spring.beanbasic.factoryBean.CustomerSet">
+    <property name="set">
+      <bean class="org.springframework.beans.factory.config.SetFactoryBean">
+        <property name="targetSetClass">
+          <value>java.util.HashSet</value>
+        </property>
+        <property name="sourceSet">
+          <list>
+            <value>1</value>
+            <value>2</value>
+            <value>3</value>
+            <value>4</value>
+          </list>
+        </property>
+      </bean>
+    </property>
+  </bean>
+  <bean id="customerSet2" class="com.wangfengbabe.learning_spring.beanbasic.factoryBean.CustomerSet">
+    <property name="set">
+      <util:set set-class="java.util.HashSet">
+        <value>1</value>
+        <value>2</value>
+        <value>3</value>
+      </util:set>
+    </property>
+  </bean>
+
+  <!-- java.util.map -->
+
+  <bean id="customerMap1" class="com.wangfengbabe.learning_spring.beanbasic.factoryBean.CustomerMap">
+    <property name="map">
+      <bean class="org.springframework.beans.factory.config.MapFactoryBean">
+        <property name="targetMapClass">
+          <value>java.util.HashMap</value>
+        </property>
+        <property name="sourceMap">
+          <map>
+            <entry key="key1" value="value1"/>
+            <entry key="key2" value="value2"/>
+            <entry key="key3" value="value3"/>
+            <entry key="key4" value="value4"/>
+          </map>
+        </property>
+      </bean>
+    </property>
+  </bean>
+
+  <bean id="customerMap2" class="com.wangfengbabe.learning_spring.beanbasic.factoryBean.CustomerMap">
+    <property name="map">
+      <util:map map-class="java.util.HashMap">
+        <entry key="key1" value="value1"/>
+        <entry key="key2" value="value2"/>
+        <entry key="key3" value="value3"/>
+        <entry key="key4" value="value4"/>
+      </util:map>
+
+    </property>
+  </bean>
+
+</beans>
