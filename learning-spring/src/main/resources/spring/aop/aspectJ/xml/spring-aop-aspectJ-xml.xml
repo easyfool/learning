@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+  <!--Aspect-->
+  <bean id="logAspect" class="com.wangfengbabe.learning_spring.aop.aspectJ.xml.LoggingAspect"/>
+
+  <aop:config>
+
+    <!--@Before-->
+    <aop:aspect id="aspectLoggingBefore" ref="logAspect">
+      <aop:pointcut id="pointcutBefore"
+        expression="execution(* com.wangfengbabe.learning_spring.aop.CustomerBo.addCustomer(..))"/>
+      <aop:before method="logBefore" pointcut-ref="pointcutBefore"/>
+    </aop:aspect>
+
+    <!--@After-->
+    <aop:aspect id="aspectLoggingAfter" ref="logAspect">
+      <aop:pointcut id="pointcutAfter"
+        expression="execution(* com.wangfengbabe.learning_spring.aop.CustomerBo.addCustomer(..))"/>
+      <aop:after method="logAfter" pointcut-ref="pointcutAfter"/>
+    </aop:aspect>
+
+    <!--@AfterReturning-->
+    <aop:aspect id="aspectLoggingAfterReturning" ref="logAspect">
+      <aop:pointcut id="pointcutAfterReturning"
+        expression="execution(* com.wangfengbabe.learning_spring.aop.CustomerBo.addCustomerReturnValue(..))"/>
+      <aop:after-returning method="logAfterReturning" pointcut-ref="pointcutAfterReturning" returning="result"/>
+    </aop:aspect>
+
+    <!--@AfterThrowing-->
+    <aop:aspect id="aspectLoggingAfterThrowing" ref="logAspect">
+      <aop:pointcut id="pointcutAfterThrowing"
+        expression="execution(* com.wangfengbabe.learning_spring.aop.CustomerBo.addCustomerThrowException(..))"/>
+      <aop:after-throwing method="logAfterThrowing" pointcut-ref="pointcutAfterReturning" throwing="error"/>
+    </aop:aspect>
+
+    <!--@Around-->
+    <aop:aspect id="aspectLoggingAround" ref="logAspect">
+      <aop:pointcut id="pointcutAround"
+        expression="execution(* com.wangfengbabe.learning_spring.aop.CustomerBo.addCustomerAround(..))"/>
+      <aop:around method="logAround" pointcut-ref="pointcutAround"/>
+    </aop:aspect>
+
+
+  </aop:config>
+
+  <bean id="customerBo" class="com.wangfengbabe.learning_spring.aop.CustomerBoImpl"/>
+</beans>
