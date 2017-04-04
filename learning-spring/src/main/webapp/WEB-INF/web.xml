@@ -5,10 +5,7 @@
          http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
   version="3.1">
   <display-name>spring learning</display-name>
-  <!--指定欢迎页面-->
-  <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
-  </welcome-file-list>
+
   <context-param>
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:spring/springmvc/applicationContext.xml</param-value>
@@ -44,13 +41,33 @@
     </listener-class>
   </listener>
 
+  <!--处理因使用内省API而导致的内存泄漏问题-->
+
+  <listener>
+    <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+  </listener>
+
 
   <!--spring MVC 的前端控制器,默认情况下,DispatcherServlet 在加载时会从一个基于这个servlet名字的
  XML文件中加载SPRING应用上下文。在这个示例中,DispatcherServlet将尝试从一个名为spring-servlet.xml
  的文件（位于应用程序的WEB-INF目录下）来加载应用上下文-->
   <servlet>
+    <!--在DispatcherServlet初始化过程中，框架会在web应用的 WEB-INF 文件夹下寻找名为[servlet-name]-servlet.xml 的配置文件，加载上下文中定义的bean-->
     <servlet-name>spring</servlet-name>
     <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <!--指名配置文件，不使用默认文件名-->
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <!--<param-value> 可以有多种写法-->
+      <!--1. 不写，使用默认值： /WEB/INF/[servlet-name]-servlet.xml-->
+      <!--2. <param-value>/WEB-INF/classes/dispatcher-servlet.xml</param-value>-->
+      <!--3. <param-value>classpath*:dispatcher-servlet.xml</param-value>-->
+      <!--4. 多个值用逗号分隔-->
+      <param-value>/WEB-INF/spring-servlet.xml</param-value>
+    </init-param>
+    <!--启动顺序，让这个servlet随servlet容器一起启动-->
+    <!--TODO 启动jetty报错-->
+    <!--<load-on-startup>1</load-on-startup>-->
   </servlet>
   <!--声明DispatcherServlet处理哪些URL-->
   <servlet-mapping>
@@ -58,10 +75,20 @@
     <url-pattern>/</url-pattern>
   </servlet-mapping>
 
-  <!--&lt;!&ndash;会话超时配置，单位分钟&ndash;&gt;-->
+  <!--指定欢迎页面-->
+  <welcome-file-list>
+    <welcome-file>/index.html</welcome-file>
+  </welcome-file-list>
+
+  <!--&lt;!&ndash;会话超时配置，单位：分钟-->
   <session-config>
     <session-timeout>360</session-timeout>
   </session-config>
+
+  <error-page>
+    <error-code>404</error-code>
+    <location>/WEB-INF/404.jsp</location>
+  </error-page>
 
 
 </web-app>

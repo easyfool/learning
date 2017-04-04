@@ -1,10 +1,8 @@
 package com.wangfengbabe.learning;
 
 import org.hamcrest.collection.IsMapContaining;
-import org.hamcrest.core.Is;
 import org.junit.Test;
 
-import javax.xml.soap.Node;
 import java.util.HashMap;
 import java.util.Map;
 

@@ -1,4 +1,4 @@
-package com.wangfengbabe.learning_spring.controller;
+package com.wangfengbabe.learning_spring.springmvc.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 public class HelloController {
 
-  @RequestMapping(value="/hello",method = RequestMethod.GET)
+  @RequestMapping(value = "/hello", method = RequestMethod.GET)
   public String printWelcome(ModelMap modelMap) {
     modelMap.addAttribute("message", "Spring MVC hello world");
     return "hello";

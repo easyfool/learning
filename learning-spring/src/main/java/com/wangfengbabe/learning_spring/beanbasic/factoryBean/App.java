@@ -1,6 +1,5 @@
 package com.wangfengbabe.learning_spring.beanbasic.factoryBean;
 
-import com.wangfengbabe.learning_spring.CustomerService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

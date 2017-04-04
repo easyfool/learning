@@ -4,7 +4,7 @@
   xmlns:context="http://www.springframework.org/schema/context"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-  <mvc:resources mapping="/resources/**" location="/resources/"/>
+
   <mvc:annotation-driven/>
 
   <context:component-scan base-package="com.wangfengbabe.learning_spring"/>
@@ -18,5 +18,50 @@
       <value>.jsp</value>
     </property>
   </bean>
+
+  <!-- 配置JSP视图 -->
+  <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
+    <property name="prefix" value="/WEB-INF/jsp/"/>
+    <property name="suffix" value=".jsp"/>
+    <property name="contentType" value="text/html;charset=UTF-8"/>
+    <property name="order" value="0"/>
+  </bean>
+
+  <!-- 配置FreeMark视图 -->
+  <bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+    <property name="contentType" value="text/html;charset=UTF-8"/>
+    <property name="viewClass" value="org.springframework.web.servlet.view.freemarker.FreeMarkerView"/>
+    <property name="suffix" value=".ftl"/>
+    <property name="cache" value="true"/>
+    <property name="exposeSessionAttributes" value="true"/>
+    <property name="exposeRequestAttributes" value="true"/>
+    <property name="exposeSpringMacroHelpers" value="true"/>
+    <!-- 在页面中使用${rc.contextPath}就可获得contextPath -->
+    <property name="requestContextAttribute" value="rc"/>
+    <property name="order" value="1"/>
+  </bean>
+
+  <!-- 文件上传配置注意:这里申明的id必须为multipartResolver -->
+
+  <!--<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">-->
+
+    <!--<property name="maxUploadSize" value="500000"/>-->
+
+  <!--</bean>-->
+
+
+  <!-- 简单的异常处理 -->
+
+
+  <!-- 对静态资源文件的访问 -->
+  <!--<mvc:resources mapping="/resources/**" location="/resources/"/>-->
+  <!--以上和下面这句话等效-->
+  <mvc:default-servlet-handler/>
+
+  <!--<mvc:resources mapping="/images/**" location="/images/" cache-period="31556926"/>-->
+  <!--<mvc:resources mapping="/js/**" location="/js/" cache-period="31556926"/>-->
+  <!--<mvc:resources mapping="/css/**" location="/css/" cache-period="31556926"/>-->
+  <!--<mvc:resources mapping="/upload/**" location="/upload/" cache-period="31556926"/>-->
 
 </beans>
