@@ -11,7 +11,7 @@ public class Customer {
 
   @Override
   public String toString() {
-    return "Customer{" +
+    return "BeanScope{" +
         "customerId=" + customerId +
         ", name='" + name + '\'' +
         ", age=" + age +

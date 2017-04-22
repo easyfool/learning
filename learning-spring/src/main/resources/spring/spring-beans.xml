@@ -1,38 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-  xmlns:p="http://www.springframework.org/schema/p"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-  <bean id="helloWorld" scope="prototype" class="com.wangfengbabe.learning_spring.HelloWorld" p:address="shanghai">
-    <property name="message" value="wangfeng"/>
-  </bean>
-
-  <bean id="customerService" class="com.wangfengbabe.learning_spring.CustomerService">
+  <bean id="helloWorld" class="com.wangfengbabe.learning_spring.HelloWorld">
     <property name="name" value="wangfeng"/>
-    <property name="url" value="www.wangfengbabe.com"/>
   </bean>
 
-  <bean id="hiJackBeforeMethod" class="com.wangfengbabe.learning_spring.HijackBeforeMethod">
-  </bean>
-  <bean id="hiJackAfterMethod" class="com.wangfengbabe.learning_spring.HijackAfterMethod">
-  </bean>
-  <bean id="hiJackThrowsMethod" class="com.wangfengbabe.learning_spring.HijackAfterThrowingExceptionMethod">
-  </bean>
-  <bean id="hiJackAroundMethod" class="com.wangfengbabe.learning_spring.HijackAroundMethod">
+  <!-- if scope is not set,it is singleton by default -->
+  <bean id="prototypeCustomer" class="com.wangfengbabe.learning_spring.BeanScope" scope="prototype">
   </bean>
 
-  <bean id="customerServiceProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
-    <property name="target" ref="customerService"/>
-    <property name="interceptorNames">
+  <!-- if scope is not set,it is singleton by default -->
+  <bean id="singletonCustomer" class="com.wangfengbabe.learning_spring.BeanScope" scope="singleton">
+  </bean>
+
+  <bean id="beanWithCollectionProperty" class="com.wangfengbabe.learning_spring.BeanWithCollectionProperty">
+    <!-- java.util.List -->
+    <property name="list">
       <list>
-        <value>hiJackAroundMethod</value>
+        <value>1</value>
+        <ref bean="singletonCustomer"/>
+        <bean class="com.wangfengbabe.learning_spring.beanbasic.innerBean.Person">
+          <property name="name" value="mkyongList"/>
+          <property name="age" value="28"/>
+        </bean>
       </list>
     </property>
+
+    <!-- java.util.Set -->
+    <property name="set">
+      <set>
+        <value>1</value>
+        <ref bean="singletonCustomer"/>
+        <bean class="com.wangfengbabe.learning_spring.beanbasic.innerBean.Person">
+          <property name="name" value="mkyongList"/>
+          <property name="age" value="28"/>
+        </bean>
+      </set>
+    </property>
+
+    <!-- java.util.Map -->
+    <property name="map">
+      <map>
+        <entry key="key1" value="value1"/>
+        <entry key="key2" value-ref="singletonCustomer"/>
+        <entry key="key3">
+          <bean class="com.wangfengbabe.learning_spring.beanbasic.injectValue.normalway.Person"/>
+        </entry>
+      </map>
+    </property>
+
+    <!-- java.util.Properties -->
+    <property name="properties">
+      <props>
+        <prop key="key1">wangfengabbe.com</prop>
+        <prop key="key2">zhaochi.com</prop>
+      </props>
+    </property>
   </bean>
-
-  <bean id="customerBo" class="com.wangfengbabe.learning_spring.CustomerBoImpl"/>
-  <bean id="logAspect" class="com.wangfengbabe.learning_spring.LoginAspect"/>
-
 
 </beans>

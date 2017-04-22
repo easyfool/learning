@@ -24,7 +24,7 @@ public class BasicAnnotationTest {
 
   @Before
   public void runBeforeTestMethod() {
-    System.out.println("@Before - run before test method");
+    System.out.println("@Before - run before1 test method");
   }
 
   @After
