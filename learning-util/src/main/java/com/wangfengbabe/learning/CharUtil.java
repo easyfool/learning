@@ -6,6 +6,7 @@ package com.wangfengbabe.learning;
 
 import java.util.regex.Pattern;
 
+//check if string contains chinese character
 public class CharUtil {
 
   public static void main(String[] args) {
