@@ -26,7 +26,7 @@ public class VerifyBehavior {
     verify(mockedList).add("one");
     verify(mockedList).clear();
 
-    assertThat(1,is(1));
+    assertThat(1, is(1));
   }
 
 }

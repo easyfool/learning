@@ -35,7 +35,7 @@ public class PrototypeScopeBeanTest {
     assertThat(customer1, not(sameInstance(customer2)));
     customer1.setMessage("hello");
     assertThat(customer1.getMessage(), is("hello"));
-    assertThat(customer2.getMessage(),   is(nullValue()));
+    assertThat(customer2.getMessage(), is(nullValue()));
   }
 
 }

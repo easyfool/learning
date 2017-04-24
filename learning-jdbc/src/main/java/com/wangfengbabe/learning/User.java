@@ -6,60 +6,61 @@ import java.util.Date;
  * Created by wangfeng on 11/1/16.
  */
 public class User {
-    private int id;
-    private String name;
-    private String password;
 
-    public String getPassword() {
-        return password;
-    }
+  private int id;
+  private String name;
+  private String password;
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
+  public String getPassword() {
+    return password;
+  }
 
-    private Date birthday;
-    private String email;
+  public void setPassword(String password) {
+    this.password = password;
+  }
 
-    public User() {
-    }
+  private Date birthday;
+  private String email;
 
-    public User(int id, String name, Date birthday, String email) {
-        this.id = id;
-        this.name = name;
-        this.birthday = birthday;
-        this.email = email;
-    }
+  public User() {
+  }
 
-    public int getId() {
-        return id;
-    }
+  public User(int id, String name, Date birthday, String email) {
+    this.id = id;
+    this.name = name;
+    this.birthday = birthday;
+    this.email = email;
+  }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+  public int getId() {
+    return id;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public void setId(int id) {
+    this.id = id;
+  }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public Date getBirthday() {
-        return birthday;
-    }
+  public void setName(String name) {
+    this.name = name;
+  }
 
-    public void setBirthday(Date birthday) {
-        this.birthday = birthday;
-    }
+  public Date getBirthday() {
+    return birthday;
+  }
 
-    public String getEmail() {
-        return email;
-    }
+  public void setBirthday(Date birthday) {
+    this.birthday = birthday;
+  }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getEmail() {
+    return email;
+  }
+
+  public void setEmail(String email) {
+    this.email = email;
+  }
 }

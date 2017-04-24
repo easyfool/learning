@@ -12,11 +12,12 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * Created by wangfeng on 09/02/2017.
  */
 public class ObjectListTest {
-    @Test
-    public void testObjectList() {
-        List<Fruit> list = Arrays.asList(new Fruit("Banana", 99), new Fruit("Apple", 10));
-        // test equals
-        assertThat(list, hasItems(new Fruit("Banana", 99), new Fruit("Apple", 10)));
 
-    }
+  @Test
+  public void testObjectList() {
+    List<Fruit> list = Arrays.asList(new Fruit("Banana", 99), new Fruit("Apple", 10));
+    // test equals
+    assertThat(list, hasItems(new Fruit("Banana", 99), new Fruit("Apple", 10)));
+
+  }
 }

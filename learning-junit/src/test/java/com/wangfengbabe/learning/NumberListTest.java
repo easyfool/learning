@@ -17,31 +17,32 @@ import static org.hamcrest.Matchers.lessThanOrEqualTo;
  * Created by wangfeng on 09/02/2017.
  */
 public class NumberListTest {
-    @Test
-    public void testAssertList() {
-        List<Integer> actual = Arrays.asList(1, 2, 3, 4, 5);
-        List<Integer> expected = Arrays.asList(1, 2, 3, 4, 5);
-        //All passed /true
 
-        //1. test equal
-        assertThat(actual, is(expected));
+  @Test
+  public void testAssertList() {
+    List<Integer> actual = Arrays.asList(1, 2, 3, 4, 5);
+    List<Integer> expected = Arrays.asList(1, 2, 3, 4, 5);
+    //All passed /true
 
-        //2. if list has this value
-        assertThat(actual, hasItem(4));
+    //1. test equal
+    assertThat(actual, is(expected));
 
-        //3. check list size
-        assertThat(actual.size(), is(5));
+    //2. if list has this value
+    assertThat(actual, hasItem(4));
 
-        //4. list order
-        //ensure correct order
-        //assertThat(actual,containsInAnyOder("a","b","c"));
+    //3. check list size
+    assertThat(actual.size(), is(5));
 
-        //5. check empty list
+    //4. list order
+    //ensure correct order
+    //assertThat(actual,containsInAnyOder("a","b","c"));
+
+    //5. check empty list
 //        assertThat(actual,not(isEmptyCollection.empty()));
 
-        //6. test numeric comparisions
-        assertThat(actual, everyItem(greaterThanOrEqualTo(1)));
-        assertThat(actual, everyItem(lessThanOrEqualTo(5)));
+    //6. test numeric comparisions
+    assertThat(actual, everyItem(greaterThanOrEqualTo(1)));
+    assertThat(actual, everyItem(lessThanOrEqualTo(5)));
 
-    }
+  }
 }

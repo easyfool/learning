@@ -104,8 +104,8 @@ public class BeanWithCollectionPropertyTest {
   }
 
   @Test
-  public void testWhenPropertyIsList(){
-    List<Object> list  = collectionBean.getList();
+  public void testWhenPropertyIsList() {
+    List<Object> list = collectionBean.getList();
     //assertThat(list,hasItem(equalTo(1)));
   }
 

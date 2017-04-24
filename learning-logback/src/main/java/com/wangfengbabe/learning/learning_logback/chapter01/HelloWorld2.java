@@ -9,11 +9,12 @@ import org.slf4j.LoggerFactory;
  * Created by wangfeng on 18/01/2017.
  */
 public class HelloWorld2 {
-    public static void main(String[] args) {
-        Logger logger = LoggerFactory.getLogger(HelloWorld2.class);
-        logger.debug("Hello world");
-        //print internal state
-        LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
-        StatusPrinter.print(lc);
-    }
+
+  public static void main(String[] args) {
+    Logger logger = LoggerFactory.getLogger(HelloWorld2.class);
+    logger.debug("Hello world");
+    //print internal state
+    LoggerContext lc = (LoggerContext) LoggerFactory.getILoggerFactory();
+    StatusPrinter.print(lc);
+  }
 }
