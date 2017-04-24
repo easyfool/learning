@@ -1,6 +1,5 @@
 package com.wangfengbabe.learning_spring.springDI.constructorInjection;
 
-import com.wangfengbabe.learning_spring.helloworld.HelloWorld;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
