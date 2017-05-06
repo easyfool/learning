@@ -8,6 +8,8 @@ public class Book {
   private String name;
 
   public Book() {
+    System.out.println("hello");
+    System.out.println();
   }
 
   public Book(String name) {
